@@ -40,18 +40,18 @@ export default function Admin() {
   };
 
   const getFullMessage = (link: GeneratedLink) => {
-    return `Dear ${link.prefix} ${link.guestName} ❤️
+    return `ආදරණීය ${link.prefix} ${link.guestName} ❤️
 
-With joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.
+අපගේ ජීවිතයේ සොඳුරුම දවසක් වන විවාහ මංගල්‍යය වෙනුවෙන් ඔබව ආදරයෙන් ආරාධනා කර සිටිමු. 💍✨
 
-Please view our wedding invitation and all the event details through the link below 🌐:
+විවාහ ආරාධනා පත්‍රය 💌👇
 
 ${link.url}
 
-Your presence would truly mean the world to us, and we would be honored to celebrate this beautiful moment together.
+ඔබගේ පැමිණීම අපගේ විශේෂ දිනය තවත් සුන්දර කරනු ඇත.
 
-With love,
-❤️ Ashan & Subhashini`;
+ආදරයෙන්,
+❤️ අෂාන් සහ සුභාෂිණී`;
   };
 
   const handleCopyLinkOnly = async () => {
