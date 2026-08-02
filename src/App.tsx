@@ -33,7 +33,7 @@ const INVITATION = {
 
 const backgroundMusic = "/handawaka-various-artists.mp3";
 const googleScriptUrl =
-  "https://script.google.com/macros/s/AKfycbx6tVTRxM0Fjc10fR0a35PjSjb9JJN-9F7zDpxyJvVMhdZ3A-_rOkAV8x8Cwpeqfp5NLw/exec";
+  "https://script.google.com/macros/s/AKfycby7nNDCFNMTYR-4o70Fy4A0rypfc78jNp4yjKrV4Ja9diQSVioFsoKdU-Z2I7Jzxlhn/exec";
 
 const publicImagePath = (fileName: string) => `/images/${fileName.replaceAll(" ", "%20")}`;
 const preImagePath = (fileName: string) => `/pre/${fileName.replaceAll(" ", "%20")}`;
@@ -269,8 +269,8 @@ export default function WeddingInvitation() {
   const guestName = searchParams.get("to");
 
   const [rsvpForm, setRsvpForm] = useState({
-    name: "",
-    guests: "1",
+    name: guestName || "",
+    attending: "Yes",
   });
 
   const [rsvpStatus, setRsvpStatus] = useState<"idle" | "sending" | "success" | "error">("idle");
@@ -307,12 +307,11 @@ export default function WeddingInvitation() {
       await submitToGoogleSheet({
         action: "rsvp",
         name: rsvpForm.name.trim(),
-        guests: rsvpForm.guests,
-        dietaryNotes: "",
+        attendance: rsvpForm.attending,
       });
 
       setRsvpStatus("success");
-      setRsvpForm({ name: "", guests: "1" });
+      setRsvpForm({ name: guestName || "", attending: "Yes" });
     } catch {
       setRsvpStatus("error");
     }
@@ -849,10 +848,10 @@ export default function WeddingInvitation() {
                           type="button"
                           onClick={() => {
                             setRsvpStatus("idle");
-                            setRsvpForm((prev) => ({ ...prev, guests: "1" }));
+                            setRsvpForm((prev) => ({ ...prev, attending: "Yes" }));
                           }}
-                          aria-pressed={rsvpForm.guests !== "0"}
-                          className={`w-full py-5 md:py-6 rounded-xl text-sm md:text-base tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98] ${rsvpForm.guests !== "0" ? "bg-[#c5a059] text-white hover:bg-[#93763f]" : "bg-[#f3f3f3] hover:bg-slate-200 text-slate-700"}`}
+                          aria-pressed={rsvpForm.attending === "Yes"}
+                          className={`w-full py-5 md:py-6 rounded-xl text-sm md:text-base tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98] ${rsvpForm.attending === "Yes" ? "bg-[#c5a059] text-white hover:bg-[#93763f]" : "bg-[#f3f3f3] hover:bg-slate-200 text-slate-700"}`}
                         >
                           ඔව්, මම ආදරයෙන් පැමිණෙන්නම්!
                         </button>
@@ -861,10 +860,10 @@ export default function WeddingInvitation() {
                           type="button"
                           onClick={() => {
                             setRsvpStatus("idle");
-                            setRsvpForm((prev) => ({ ...prev, guests: "0" }));
+                            setRsvpForm((prev) => ({ ...prev, attending: "No" }));
                           }}
-                          aria-pressed={rsvpForm.guests === "0"}
-                          className={`w-full py-5 md:py-6 rounded-xl text-sm md:text-base tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98] ${rsvpForm.guests === "0" ? "bg-[#c5a059] text-white hover:bg-[#93763f]" : "bg-[#f3f3f3] hover:bg-slate-200 text-slate-700"}`}
+                          aria-pressed={rsvpForm.attending === "No"}
+                          className={`w-full py-5 md:py-6 rounded-xl text-sm md:text-base tracking-wide transition-all shadow-sm flex items-center justify-center px-4 leading-relaxed active:scale-[0.98] ${rsvpForm.attending === "No" ? "bg-[#c5a059] text-white hover:bg-[#93763f]" : "bg-[#f3f3f3] hover:bg-slate-200 text-slate-700"}`}
                         >
                           කණගාටුයි, මට පැමිණිය නොහැක. නමුත් මගේ ආශීර්වාදය ඔබ සමඟයි.
                         </button>

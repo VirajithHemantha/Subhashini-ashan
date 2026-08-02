@@ -30,7 +30,7 @@ export default function Admin() {
     const fullName = `${prefix} ${guestName.trim()}`;
     const baseUrl = window.location.origin;
     const url = `${baseUrl}/?to=${encodeURIComponent(fullName)}`;
-    
+
     setGeneratedLink({
       id: crypto.randomUUID(),
       prefix,
@@ -79,7 +79,7 @@ With love,
   return (
     <div className="h-[100dvh] w-full overflow-y-auto overflow-x-hidden bg-slate-50 py-12 px-4 font-sans">
       <div className="max-w-4xl mx-auto space-y-8">
-        
+
         {/* Generator Card */}
         <div className="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 md:p-8">
           <h1 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2">

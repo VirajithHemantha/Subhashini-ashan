@@ -9,7 +9,7 @@
  * - wish
  */
 
-const SPREADSHEET_ID = "1s7CtSYuu0PeysjHKpaA7d8LQVb_d7xe87XkUu_KQ9lY";
+const SPREADSHEET_ID = "1IoDZO3nlr8U3P00fKZOytiAA2aXzsG0Ic8H3_52UZjg";
 const RSVP_SHEET_NAME = "rsvp";
 const WISH_SHEET_NAME = "wish";
 
@@ -53,27 +53,20 @@ function saveRsvp_(params) {
   ensureHeader_(sheet, [
     "timestamp",
     "name",
-    "guests",
     "attendance",
-    "dietaryNotes",
   ]);
 
   const name = String(params.name || "").trim();
-  const guests = String(params.guests || "").trim();
-  const dietaryNotes = String(params.dietaryNotes || "").trim();
+  const attendance = String(params.attendance || "").trim();
 
   if (!name) {
     return { ok: false, message: "Name is required" };
   }
 
-  const attendance = guests === "0" ? "Declined" : "Attending";
-
   sheet.appendRow([
     new Date(),
     name,
-    guests || "1",
-    attendance,
-    dietaryNotes,
+    attendance || "Yes",
   ]);
 
   return { ok: true, message: "RSVP saved" };
