@@ -519,13 +519,18 @@ export default function WeddingInvitation() {
 
               <div className="relative z-10 w-full max-w-5xl px-6 text-center mt-12 md:mt-0">
                 {guestName && (
-                  <motion.p
+                  <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="text-lg md:text-xl font-bold text-[#c5a059] mb-2 drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]"
+                    className="mb-2 flex flex-col items-center"
                   >
-                    {guestName}
-                  </motion.p>
+                    <p className="text-sm md:text-base font-medium text-[#c5a059]/80 tracking-widest uppercase mb-2">
+                      We cordially invite
+                    </p>
+                    <p className="text-xl md:text-2xl font-bold text-[#c5a059] drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
+                      {guestName}
+                    </p>
+                  </motion.div>
                 )}
 
                 <motion.div
