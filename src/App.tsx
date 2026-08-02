@@ -523,8 +523,8 @@ export default function WeddingInvitation() {
                     animate={{ opacity: 1, y: 0 }}
                     className="mb-2 flex flex-col items-center"
                   >
-                    <p className="text-sm md:text-base font-medium text-[#c5a059]/80 tracking-widest uppercase mb-2">
-                      We cordially invite
+                    <p className="text-base md:text-lg font-bold text-[#c5a059]/90 tracking-wider mb-2">
+                      සෙනෙහසින් ඇරයුම් කරමු
                     </p>
                     <p className="text-xl md:text-2xl font-bold text-[#c5a059] drop-shadow-[0_0_10px_rgba(255,255,255,0.8)]">
                       {guestName}
